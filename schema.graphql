@@ -1,0 +1,26 @@
+scalar Date
+
+type Query {
+	meetups: [Meetup]
+}
+
+# A meetup that holds regular events
+type Meetup {
+  id: ID!
+  name: String!
+  # The main organiser of the meetup
+  organiser: Person
+}
+
+type Event {
+  id: ID!
+  name: String!
+  date: Date!
+  attendees: [Person]
+}
+
+type Person {
+  id: ID!
+  name: String
+  image: String
+}
