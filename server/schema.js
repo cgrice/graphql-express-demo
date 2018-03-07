@@ -16,8 +16,6 @@ const resolvers = {
     },
     Event: {
         attendees: event => event.attendees.map(id => findPerson(id)),
-        attendeeCount: event => event.attendees.length,
-        free: () => true,
     },
 }
 

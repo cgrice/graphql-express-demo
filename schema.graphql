@@ -18,8 +18,6 @@ type Event {
   name: String!
   date: Date!
   attendees: [Person]
-  attendeeCount: Int
-  free: Boolean
 }
 
 type Person {
