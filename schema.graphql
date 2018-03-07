@@ -10,6 +10,7 @@ type Meetup {
   name: String!
   # The main organiser of the meetup
   organiser: Person
+  events: [Event]
 }
 
 type Event {
@@ -17,6 +18,8 @@ type Event {
   name: String!
   date: Date!
   attendees: [Person]
+  attendeeCount: Int
+  free: Boolean
 }
 
 type Person {

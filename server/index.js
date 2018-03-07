@@ -1,14 +1,16 @@
-import http from 'http'
-import app from './server'
+const express = require('express')
+const graphqlHTTP = require('express-graphql')
 
-const server = http.createServer(app)
-let currentApp = app
-server.listen(3000)
+const schema = require('./schema')
 
-if (module.hot) {
-  module.hot.accept('./server', () => {
-    server.removeListener('request', currentApp)
-    server.on('request', app)
-    currentApp = app
-  })
-}
+const app = express()
+const port = process.env.PORT || 3000
+
+app.use('/graphql', graphqlHTTP({
+    schema,
+    graphiql: true,
+}))
+
+app.listen(port, () => {
+    console.log(`Server listening on ${port}`)
+})
